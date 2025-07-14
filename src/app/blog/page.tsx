@@ -1,31 +1,8 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import Link from "next/link";
+import { getSortedPostsData, PostMeta } from "@/lib/blog-data";
 
-interface PostMeta {
-  title: string;
-  description: string;
-  slug: string;
-}
-
-export default function BlogPage() {
-  const postsDirectory = path.join(process.cwd(), "posts");
-  const files = fs.readdirSync(postsDirectory);
-
-  const posts: PostMeta[] = files
-    .filter((file) => file.endsWith(".md") || file.endsWith(".mdx"))
-    .map((file) => {
-      const slug = file.replace(/\.mdx?$/, "");
-      const filePath = path.join(postsDirectory, file);
-      const fileContents = fs.readFileSync(filePath, "utf8");
-      const { data } = matter(fileContents);
-      return {
-        title: data.title ?? slug,
-        description: data.description ?? "",
-        slug,
-      };
-    });
+export default async function BlogPage() {
+  const posts: PostMeta[] = getSortedPostsData();
 
   return (
     <main className="max-w-2xl mx-auto py-10 px-4">

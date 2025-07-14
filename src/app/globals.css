@@ -4,6 +4,9 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@import 'katex/dist/katex.min.css'; /* <-- Add this line */
+
+
 
 @custom-variant dark (&:is(.dark *));
 

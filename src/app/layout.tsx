@@ -1,3 +1,4 @@
+
 import { cookies } from "next/headers";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -6,6 +7,8 @@ import AppSidebar from "@/components/AppSidebar";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { SidebarProvider } from "@/components/ui/sidebar";
+import 'katex/dist/katex.min.css'; // <-- Add this line
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
