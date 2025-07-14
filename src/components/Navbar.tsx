@@ -1,11 +1,9 @@
 "use client";
 
 import * as React from "react";
-import { useState } from "react";
 import Link from "next/link";
 
 import {
-  Calculator,
   Grid2x2,
   LogOut,
   Menu,
@@ -26,14 +24,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "./ui/button";
-import { SidebarTrigger, useSidebar } from "./ui/sidebar";
+import {  useSidebar } from "./ui/sidebar";
 
-const NAV_LINKS = [
-  { title: "Home", path: "/" },
-  { title: "Blog", path: "/blog" },
-  { title: "About", path: "/about" },
-  { title: "Contact", path: "/contact" },
-];
+
 
 export default function Navbar() {
   const { setTheme } = useTheme();

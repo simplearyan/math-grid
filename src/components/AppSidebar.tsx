@@ -1,7 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 import {
   Calculator,
@@ -9,7 +7,6 @@ import {
   ChevronUp,
   Contact,
   FileQuestion,
-  FunctionSquare,
   Home,
   Newspaper,
   Plus,
@@ -32,16 +29,12 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-  SidebarProvider,
   SidebarSeparator,
-  SidebarTrigger,
 } from "./ui/sidebar";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {

@@ -3,39 +3,15 @@ import path from "path";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import rehypePrettyCode, { type Options as PrettyCodeOptions } from "rehype-pretty-code";
+import rehypePrettyCode from "rehype-pretty-code";
 
 import Calculator from "@/components/Calculator";
 
 interface BlogPostPageProps {
-  params: {
-    slug: string;
-  };
+   params: Promise<{ slug: string }>; // params is now a Promise
 }
 
-const prettyCodeOptions:PrettyCodeOptions = {
-  theme: "github-dark",
-  showLineNumbers: true,
-  // Custom function to extract file name from meta
-  onVisitLine(node) {
-    // Ensure empty lines are rendered
-    if (!node.children) node.children = [];
-    if (node.children.length === 0) {
-      node.children = [{ type: "text", value: " " }];
-    }
-  },
-  onVisitHighlightedLine(node) {
-    if (!node.properties) node.properties = {};
-    if (!Array.isArray(node.properties.className)) {
-      node.properties.className = [];
-    }
-    node.properties.className.push("highlighted");
-  },
-  onVisitHighlightedWord(node) {
-    if (!node.properties) node.properties = {};
-    node.properties.className = ["word"];
-  },
-};
+
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
@@ -63,7 +39,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         options={{
           mdxOptions: {
             rehypePlugins: [
-             [rehypePrettyCode, prettyCodeOptions],
+              [
+                rehypePrettyCode,
+                {
+                  theme: "github-dark",
+                  showLineNumbers: true, // Enable line numbers
+                },
+              ],
             ],
           },
         }}
