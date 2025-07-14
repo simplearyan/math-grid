@@ -16,6 +16,7 @@ const nextConfig: NextConfig | ((phase: string) => Promise<NextConfig>) = async 
     // For example:
     // reactStrictMode: true,
     // swcMinify: true,
+    output: 'export'
   };
 
   // Only call setupDevPlatform in development phase to allow bindings access
