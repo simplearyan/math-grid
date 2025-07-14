@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getSortedPostsData, PostMeta } from "@/lib/blog-data";
 
+export const runtime = 'edge'; // <--- Add this line here
+
 export default async function BlogPage() {
   const posts: PostMeta[] = getSortedPostsData();
 

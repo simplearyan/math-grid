@@ -1,3 +1,4 @@
+export const runtime = 'edge'; // Add this line
 
 export default function Home() {
   return (
